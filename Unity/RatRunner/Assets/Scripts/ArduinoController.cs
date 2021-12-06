@@ -7,7 +7,7 @@ using System.Threading;
 
 public class ArduinoController : MonoBehaviour
 {
-    SerialPort stream = new SerialPort("/dev/tty.usbmodem14101", 9600);
+    public SerialPort stream = new SerialPort("/dev/tty.usbserial-AD0KBXJ2", 9600);
     public string data;
     private Thread thread;
     private Queue outputQueue;    // From Unity to Arduino
@@ -33,7 +33,6 @@ public class ArduinoController : MonoBehaviour
         stream.ReadTimeout = timeout;
         try
         {
-            Debug.Log(stream.ReadLine());
             return stream.ReadLine();
         }
         catch (TimeoutException e)
@@ -69,9 +68,11 @@ public class ArduinoController : MonoBehaviour
                 WriteToArduino(command);
             }
             // Read from Arduino
-            data = ReadFromArduino(10);
+            data = ReadFromArduino(100);
             if (data != null)
+            {
                 inputQueue.Enqueue(data);
+            }
         }
     }
 

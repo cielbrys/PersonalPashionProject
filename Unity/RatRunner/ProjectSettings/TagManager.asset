@@ -5,7 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Obstacle
-  - PowerUp
+  - Ground
+  - Serum
+  - Cheese
+  - Ball
   layers:
   - Default
   - TransparentFX
