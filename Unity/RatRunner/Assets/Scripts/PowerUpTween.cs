@@ -14,6 +14,7 @@ public class PowerUpTween : MonoBehaviour
 
         playerControllerScript = GameObject.Find("Player").GetComponent<PlayerController>();
         managerScript = GameObject.Find("GameManager").GetComponent<GameManager>();
+        LeanTween.rotateAroundLocal(gameObject,new Vector3(0,30,0),-720, 2f).setRepeat(-1);
 
 
     }

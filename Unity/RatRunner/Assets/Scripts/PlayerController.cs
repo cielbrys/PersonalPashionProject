@@ -15,14 +15,19 @@ public class PlayerController : MonoBehaviour
 
     public int score;
     public TextMeshProUGUI scoreText;
+    private bool scoreUpdating = false;
 
     public bool usePowerUp = false;
+    public bool speedUp = false;
     public string powerUpName = "";
     public GameObject ballIndicator;
     public GameObject flyIndicator;
-    public int powerUpTimer = 10;
+    public int powerUpTimer = 15;
     public TextMeshProUGUI uiTimer;
     public GameObject uiTimerObj;
+    public AudioSource powerSoundFX;
+    private AudioSource powerTimerSoundFX;
+    private AudioSource powerTransformSoundFX;
 
 
     public int jumpForce = 150;
@@ -31,6 +36,8 @@ public class PlayerController : MonoBehaviour
     private Rigidbody playerRb;
     private GameManager gameManagerScript;
     private ArduinoController arduinoControllerScript;
+    private SpawnManager spawnManagerScript;
+
     private Vector3 leftPos;
     private Vector3 rightPos;
 
@@ -51,12 +58,24 @@ public class PlayerController : MonoBehaviour
 
     public bool hidePowerUpUi = true;
 
+    public bool gameStarting = false;
+    public bool tutorialPause = false;
+
+    public GameObject prof;
+    private bool startedShowing = false;
+
+    private AudioSource deadSoundFx;
+
     // Start is called before the first frame update
     void Start()
     {
         playerRb = GetComponent<Rigidbody>();
         gameManagerScript = GameObject.Find("GameManager").GetComponent<GameManager>();
         arduinoControllerScript = GameObject.Find("Arduino").GetComponent<ArduinoController>();
+        spawnManagerScript = GameObject.Find("SpawnManager").GetComponent<SpawnManager>();
+        powerTimerSoundFX = uiTimerObj.GetComponent<AudioSource>();
+        powerTransformSoundFX = powerUpFX.GetComponent<AudioSource>();
+        deadSoundFx = gameObject.GetComponent<AudioSource>();
 
         leftPos = new Vector3(-8, 0, 0);
         rightPos = new Vector3(8, 0, 0);
@@ -94,8 +113,7 @@ public class PlayerController : MonoBehaviour
 
         if(float.Parse(dataSplit[5]) == 1 && !gameManagerScript.gameOver && !running && prevMid == 0 && gameManagerScript.tutorial ==1)
         {
-            running = true;
-            StartUpateScore();
+            gameStarting = true;
         }
 
         //restart Game
@@ -105,10 +123,42 @@ public class PlayerController : MonoBehaviour
 
         }
 
+        //check if running
+        if (gameStarting && float.Parse(dataSplit[0]) > 1 && !tutorialPause && !gameManagerScript.gameOver)
+        {
+            running = true;
+            if (!scoreUpdating)
+            {
+                StartUpateScore();
+            }
+            if (gameManagerScript.tutorial >= 4)
+            {
+                hideProf();
+            }
+
+        }
+        else if(gameStarting && float.Parse(dataSplit[0]) <= 1 && !tutorialPause && !gameManagerScript.gameOver)
+        {
+            if (usePowerUp && powerUpName == "Serum")
+            {
+                running = true;
+            }
+            else
+            {
+                running = false;
+                StopScore();
+                if (gameManagerScript.tutorial >= 4)
+                {
+                    showProf();
+                }
+            }
+        }
+
         //when running
         if (running && !gameManagerScript.gameOver && gameManagerScript.tutorial >= 2)
         {
             playerAnim.SetTrigger("running_trig");
+
             if (float.Parse(dataSplit[1]) == 1 && prevLeft == 0 && !isLeft && !changing)
             {
                 ChangeLane(300);
@@ -131,8 +181,7 @@ public class PlayerController : MonoBehaviour
             if (float.Parse(dataSplit[5]) == 1 && prevMid == 0 && powerUpName != "" && !usePowerUp)
             {
                 ActivatePowerUp();
-                LeanTween.scale(uiTimerObj, new Vector3(0.9f, 0.9f, 0), 0.5f);
-            }
+             }
 
 
 
@@ -147,6 +196,7 @@ public class PlayerController : MonoBehaviour
                     else if (powerUpName == "Serum")
                     {
                         flyIndicator.gameObject.SetActive(true);
+                        gameManagerScript.speed = 6;
                     }
                 }
 
@@ -155,16 +205,22 @@ public class PlayerController : MonoBehaviour
                     flyPowerUp.Play();
                     playerAnim.speed = 0;
                     onGround = false;
+                    running = true;
                     playerRb.AddForce(Vector3.up * 10, ForceMode.Impulse);
                     if (transform.position.y >= 10)
                     {
                         playerRb.velocity = Vector3.zero;
+                    }
+                    if (!speedUp)
+                    {
+                        speedUp = true;
                     }
                 } else if (powerUpName == "Cheese")
                 {
                     cheesePowerUp.Play();
                 }
             }
+
 
 
             //set previous button data, prevent changes when button is pushed in all the time
@@ -233,10 +289,10 @@ public class PlayerController : MonoBehaviour
             {
                 playerRb.AddForce (Vector3.zero, ForceMode.Impulse);
                 deadFX.Play();
+                deadSoundFx.Play();
                 playerRb.useGravity = true;
-                Debug.Log("Game OVER");
-                gameManagerScript.gameOver = true;
                 running = false;
+                gameManagerScript.gameOver = true;
             }
         }
         if (collision.gameObject.CompareTag("Ground"))
@@ -253,11 +309,38 @@ public class PlayerController : MonoBehaviour
         LeanTween.scaleY(gameObject, 1f, 0.2f);
     }
 
+    void showProf()
+    {
+        if (!startedShowing)
+        {
+            LeanTween.cancel(prof);
+            LeanTween.scale(prof, new Vector3(0.4f, 0.4f, 0), 8f).setOnComplete(GameOver);
+            startedShowing = true;
+        }
+    }
+
+    void hideProf()
+    {
+        if (startedShowing)
+        {
+            LeanTween.cancel(prof);
+            LeanTween.scale(prof, new Vector3(0f, 0f, 0), 3f);
+            startedShowing = false;
+        }
+    }
+
+    void GameOver()
+    {
+        gameManagerScript.gameOver = true;
+    }
+
+
     IEnumerator StopPowerUp()
     {
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(15);
         if(powerUpName == "Serum")
         {
+            gameManagerScript.speed = 3;
             playerRb.useGravity = true;
             flyPowerUp.Stop();
             flyIndicator.gameObject.SetActive(false);
@@ -274,8 +357,12 @@ public class PlayerController : MonoBehaviour
         powerUpName = "";
         usePowerUp = false;
         CancelInvoke("countDownPowerUp");
-        uiTimer.text = "";
-        powerUpTimer = 10;
+        powerTimerSoundFX.Stop();
+        powerUpTimer = 15;
+        LeanTween.scale(uiTimerObj, new Vector3(0f, 0f, 0), 0.5f);
+        LeanTween.cancel(gameManagerScript.uiPowerUp, true);
+        LeanTween.scale(gameManagerScript.uiPowerUp, new Vector3(0.1368624f, 0.1368624f, 0), 0.5f);
+
     }
 
     void updateScore()
@@ -309,23 +396,30 @@ public class PlayerController : MonoBehaviour
 
     void Down()
     {
-        LeanTween.scaleY(gameObject, 0.6f, 0.2f);
+        LeanTween.scaleY(gameObject, 0.8f, 0.2f);
         StartCoroutine(stopDown());
     }
 
     void ActivatePowerUp()
     {
+        LeanTween.scale(uiTimerObj, new Vector3(4.6f, 4.6f, 0), 0.5f);
         InvokeRepeating("countDownPowerUp", 0, 1f);
+        LeanTween.scale(gameManagerScript.uiPowerUp, new Vector3(0.1848601f, 0.1848601f, 0), 0.5f).setLoopPingPong();
+        powerTimerSoundFX.Play();
         usePowerUp = true;
         powerUpFX.Play();
+        powerTransformSoundFX.Play();
         StartCoroutine(StopPowerUp());
     }
 
     void PlayTutorial()
     {
-        if (!running)
+        if (running)
         {
             playerAnim.SetTrigger("running_trig");
+        }
+        if (!running)
+        {
             if (gameManagerScript.tutorial == 1)
             {
                 if (float.Parse(dataSplit[1]) == 1 && prevLeft == 0 && !isLeft && !changing)
@@ -333,8 +427,12 @@ public class PlayerController : MonoBehaviour
                     ChangeLane(300);
                     gameManagerScript.tutorial++;
                     running = true;
+                    tutorialPause = false;
                     StartUpateScore();
-                    gameManagerScript.uiTutorial1.SetActive(false);
+                    foreach (GameObject uiTutorial in gameManagerScript.uiTutorial1)
+                    {
+                        LeanTween.scale(uiTutorial, new Vector3(0, 0, 1), 0.5f).setDestroyOnComplete(true);
+                    }
 
 
                 }
@@ -343,9 +441,12 @@ public class PlayerController : MonoBehaviour
                     ChangeLane(-300);
                     gameManagerScript.tutorial++;
                     running = true;
+                    tutorialPause = false;
                     StartUpateScore();
-                    gameManagerScript.uiTutorial1.SetActive(false);
-
+                    foreach (GameObject uiTutorial in gameManagerScript.uiTutorial1)
+                    {
+                        LeanTween.scale(uiTutorial, new Vector3(0, 0, 1), 0.5f).setDestroyOnComplete(true);
+                    }
 
                 }
             }
@@ -355,16 +456,24 @@ public class PlayerController : MonoBehaviour
                 {
                     gameManagerScript.tutorial++;
                     running = true;
+                    tutorialPause = false;
                     StartUpateScore();
-                    gameManagerScript.uiTutorial2.SetActive(false);
+                    foreach (GameObject uiTutorial in gameManagerScript.uiTutorial2)
+                    {
+                        LeanTween.scale(uiTutorial, new Vector3(0, 0, 1), 0.5f).setDestroyOnComplete(true);
+                    }
                     Jump();
                 }
                 else if (float.Parse(dataSplit[4]) == 1 && prevDown == 0)
                 {
                     gameManagerScript.tutorial++;
                     running = true;
+                    tutorialPause = false;
                     StartUpateScore();
-                    gameManagerScript.uiTutorial2.SetActive(false);
+                    foreach (GameObject uiTutorial in gameManagerScript.uiTutorial2)
+                    {
+                        LeanTween.scale(uiTutorial, new Vector3(0, 0, 1), 0.5f).setDestroyOnComplete(true);
+                    }
                     Down();
                 }
             }
@@ -372,11 +481,15 @@ public class PlayerController : MonoBehaviour
             {
                 if (float.Parse(dataSplit[5]) == 1 && prevMid == 0 && powerUpName != "" && !usePowerUp)
                 {
-                    gameManagerScript.uiTutorial3.SetActive(false);
-                    LeanTween.scale(gameManagerScript.uiPowerUp, new Vector3(0.6f, 0.6f, 0), 0.5f);
-                    LeanTween.moveLocal(gameManagerScript.uiPowerUp, new Vector3(-360, 100, 0), 0.5f);
+                    foreach (GameObject uiTutorial in gameManagerScript.uiTutorial3)
+                    {
+                        LeanTween.scale(uiTutorial, new Vector3(0, 0, 1), 0.5f).setDestroyOnComplete(true);
+                    }
+                    LeanTween.scale(gameManagerScript.uiPowerUp, new Vector3(0.1368624f, 0.1368624f, 0), 0.5f);
+                    LeanTween.moveLocal(gameManagerScript.uiPowerUp, new Vector3(-347, 85, 0), 0.5f); ;
                     gameManagerScript.tutorial++;
                     running = true;
+                    tutorialPause = false;
                     StartUpateScore();
                     ActivatePowerUp();
                 }
@@ -388,13 +501,14 @@ public class PlayerController : MonoBehaviour
     {
 
         CancelInvoke("updateScore");
+        scoreUpdating = false;
 
     }
 
     void StartUpateScore()
     {
-
-    InvokeRepeating("updateScore", 0, gameManagerScript.scoreUpdate);
+            InvokeRepeating("updateScore", 0, gameManagerScript.scoreUpdate);
+            scoreUpdating = true;
 
     }
 

@@ -6,9 +6,9 @@ public class SpawnManager : MonoBehaviour
 {
     public GameObject[] obstaclePrefabs;
     public GameObject[] powerUpPrefabs;
-    private float startDelay = 3;
-    private float repeatRate = 5;
-    private float repeatPowerRate = 25;
+    public float startDelay = 3;
+    public float repeatRate = 4;
+    private float repeatPowerRate = 35;
     private float startDelayPower = 20;
     private PlayerController playerControllerScript;
     public int[] spawnPos;

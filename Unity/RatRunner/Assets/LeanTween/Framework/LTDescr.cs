@@ -254,7 +254,12 @@ public class LTDescr
 		return this;
 	}
 
-	public LTDescr setMoveSpline(){
+    internal void setOnComplete(object v)
+    {
+        throw new NotImplementedException();
+    }
+
+    public LTDescr setMoveSpline(){
 		this.type = TweenAction.MOVE_SPLINE;
 		this.initInternal = this.initFromInternal;
 		this.easeInternal = ()=>{

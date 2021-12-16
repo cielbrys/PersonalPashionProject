@@ -6,17 +6,13 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    public float speed = 30f;
+    public float speed = 3f;
     public bool gameOver;
 
     public GameObject uiBall;
     public GameObject uiCheese;
     public GameObject uiSerum;
     public GameObject uiPowerUp;
-
-    public GameObject uiTutorial1;
-    public GameObject uiTutorial2;
-    public GameObject uiTutorial3;
 
     public GameObject uiStart;
     public GameObject uiDead;
@@ -26,21 +22,36 @@ public class GameManager : MonoBehaviour
 
     public int tutorial = 1;
 
+    public GameObject settingUI;
+    private bool showingSettings = false;
+
+    public AudioSource SoundTrack;
+
+    public GameObject[] uiTutorial1;
+    public GameObject[] uiTutorial2;
+    public GameObject[] uiTutorial3;
+
     // Start is called before the first frame update
     void Start()
     {
+        LeanTween.init(800);
         gameOver = false;
         tutorial = 1;
         playerControllerScript = GameObject.Find("Player").GetComponent<PlayerController>();
         scoreUpdate = 1f;
+        SoundTrack = GameObject.Find("SoundTrack").GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (playerControllerScript.running)
+        if (playerControllerScript.gameStarting)
         {
             uiStart.gameObject.SetActive(false);
+            if (!SoundTrack.isPlaying)
+            {
+                SoundTrack.Play();
+            }
         }
 
         if (gameOver)
@@ -58,6 +69,18 @@ public class GameManager : MonoBehaviour
             scoreUpdate = 1f;
             speed = 30f;
         }
-        
+
+        if (Input.GetKeyUp(KeyCode.F5))
+        {
+            if (!showingSettings)
+            {
+                settingUI.SetActive(true);
+                showingSettings = true;
+            } else
+            {
+                settingUI.SetActive(false);
+                showingSettings = false;
+            }
+        } 
     }
 }

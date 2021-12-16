@@ -1,18 +1,21 @@
 ﻿<Properties StartupConfiguration="{4139E59D-0772-2505-5F57-6CC1CE9AF3EB}|">
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/PlayerController.cs">
     <Files>
-      <File FileName="Assets/Scripts/DetectCollision.cs" Line="45" Column="48" IsPinned="True" />
-      <File FileName="Assets/Scripts/SpawnManager.cs" Line="41" Column="108" IsPinned="True" />
-      <File FileName="Assets/Scripts/PlayerController.cs" Line="271" Column="31" IsPinned="True" />
-      <File FileName="Assets/Scripts/checkPosition.cs" Line="16" Column="1" IsPinned="True" />
-      <File FileName="Assets/Scripts/GameManager.cs" Line="49" Column="1" />
-      <File FileName="Assets/Scripts/FollowPlayer.cs" Line="14" Column="1" />
-      <File FileName="Assets/Scripts/DeleteOutOfRange.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/DetectCollision.cs" IsPinned="True" />
+      <File FileName="Assets/Scripts/SpawnManager.cs" IsPinned="True" />
+      <File FileName="Assets/Scripts/GameManager.cs" IsPinned="True" />
+      <File FileName="Assets/Scripts/PlayerController.cs" Line="295" Column="51" IsPinned="True" />
+      <File FileName="Assets/Scripts/MoveFloor.cs" Line="24" Column="2" />
       <File FileName="Assets/Scripts/ArduinoController.cs" />
-      <File FileName="../../../../Dev/Unity/brysCiel_DEV_unityChallange_code/Assets/Scripts/PlayerController.cs" />
-      <File FileName="Assets/Scripts/MoveFloor.cs" />
+      <File FileName="Assets/Scripts/FollowPlayer.cs" />
+      <File FileName="Assets/Scripts/DeleteOutOfRange.cs" />
       <File FileName="Assets/Scripts/MoveTowardPlayer.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/CheckPositionTut1 (copy).cs" Line="15" Column="6" />
+      <File FileName="Assets/Scripts/CheckPositionTut1.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/CheckPositionTut2.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/PowerUpTween.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/PowerPrefabTween.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/RepeatFloor.cs" Line="23" Column="6" />
+      <File FileName="Assets/Scripts/RepeatWall.cs" Line="13" Column="62" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -30,7 +33,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="5e3116af-451d-41b6-bdb5-cdc1aabac390" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="e97ae7ed-2e71-4f07-93a1-60aba0aaf4f2" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

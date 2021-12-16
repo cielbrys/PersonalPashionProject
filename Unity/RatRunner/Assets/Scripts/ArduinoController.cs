@@ -4,6 +4,7 @@ using UnityEngine;
 using System.IO.Ports;
 using System;
 using System.Threading;
+using UnityEngine.UI;
 
 public class ArduinoController : MonoBehaviour
 {
@@ -12,10 +13,13 @@ public class ArduinoController : MonoBehaviour
     private Thread thread;
     private Queue outputQueue;    // From Unity to Arduino
     private Queue inputQueue; // Arduino to Unity
+    public Dropdown usbPort;
+    public string usbPortText = "/dev/tty.usbserial-AD0KBXJ2"; // mac: " / dev/tty.usbserial-AD0KBXJ2" windows: "COM4";
 
     // Start is called before the first frame update
     void Start()
     {
+        stream = new SerialPort(usbPortText, 9600);
         stream.ReadTimeout = 50;
         stream.Open();
         StartThread();
@@ -25,7 +29,6 @@ public class ArduinoController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     public string ReadFromArduino(int timeout = 0)

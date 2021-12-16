@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <LangVersion>latest</LangVersion>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -53,6 +53,9 @@
     <UnityVersion>2020.3.19f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Analyzer Include="/Applications/Visual Studio.app/Contents/Resources/lib/monodevelop/AddIns/MonoDevelop.Unity/Analyzers/Microsoft.Unity.Analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="Assets/Scripts/PowerPrefabTween.cs" />
     <Compile Include="Assets/Scripts/DetectCollision.cs" />
     <Compile Include="Assets/LeanTween/Framework/LeanTween.cs" />
@@ -74,6 +77,7 @@
     <Compile Include="Assets/LeanTween/Examples/Scripts/PathSplineEndless.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/PathBezier.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/PathSpline.cs" />
+    <Compile Include="Assets/Scripts/sounds.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/GeneralAdvancedTechniques.cs" />
     <Compile Include="Assets/LeanTween/Framework/LeanSmooth.cs" />
     <Compile Include="Assets/Scripts/PlayerController.cs" />
@@ -85,6 +89,7 @@
     <Compile Include="Assets/LeanTween/Examples/Scripts/PathSplineTrack.cs" />
     <Compile Include="Assets/LeanTween/Framework/LeanTest.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/TestingZLegacy.cs" />
+    <Compile Include="Assets/Scripts/CheckPositionTut1.cs" />
     <Compile Include="Assets/Scripts/FollowPlayer.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/PathSpline2d.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/TestingZLegacyExt.cs" />
@@ -92,15 +97,15 @@
     <Compile Include="Assets/LeanTween/Examples/Scripts/PathBezier2d.cs" />
     <Compile Include="Assets/Scripts/rotateBall.cs" />
     <Compile Include="Assets/Scripts/GameManager.cs" />
+    <Compile Include="Assets/Scripts/RepeatWall.cs" />
     <Compile Include="Assets/LeanTween/Framework/LTDescrOptional.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/GeneralEasingTypes.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/GeneralSequencer.cs" />
     <Compile Include="Assets/LeanTween/Examples/Archived/OldGUIExamplesCS.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/GeneralBasic.cs" />
+    <Compile Include="Assets/Scripts/CheckPositionTut2.cs" />
     <Compile Include="Assets/LeanTween/Examples/Archived/TestingRigidbodyCS.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/Following.cs" />
-    <Compile Include="Assets/Scripts/CheckPositionTut1.cs" />
-    <Compile Include="Assets/Scripts/CheckPositionTut2.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets/TextMesh Pro/Shaders/TMPro.cginc" />

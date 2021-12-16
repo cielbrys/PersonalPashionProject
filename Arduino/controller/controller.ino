@@ -3,7 +3,7 @@
 #include <SimpleTimer.h>
 
 SerialCommand sCmd;
-int hallSensorPin = 1;    
+int hallSensorPin = A5;    
 int state = 0;
 int counter = 0;
 int prevState = 0;
@@ -14,6 +14,7 @@ int right = 0;
 int up = 0;
 int down = 0;
 int mid = 0;
+
 float kmh = 0.00;
 float rpm = 0.00;
 
@@ -87,7 +88,7 @@ void loop(){
 
    if(buttnLeft == LOW && prevButtnLeft == HIGH){
      left = 1;
-        Serial.print(0);
+        Serial.print(kmh);
         Serial.print(",");
         Serial.print(left);
         Serial.print(",");
@@ -104,12 +105,15 @@ void loop(){
           digitalWrite(yellowButtonLed, LOW);
       }
  
-    } else {
+    } else{
       left = 0;
+      if(tutorial == 4){
+      digitalWrite(yellowButtonLed, HIGH);
+      }
     }
     if (buttnRight == LOW && prevButtnRight == HIGH){
      right = 1;
-        Serial.print(0);
+        Serial.print(kmh);
         Serial.print(",");
         Serial.print(left);
         Serial.print(",");
@@ -128,10 +132,13 @@ void loop(){
 
     } else {
       right = 0;
+      if(tutorial == 4){
+      digitalWrite(yellowButtonLed, HIGH);
+      }
     }
     if (buttnUp == LOW && prevButtnUp == HIGH){
      up = 1;
-        Serial.print(0);
+        Serial.print(kmh);
         Serial.print(",");
         Serial.print(left);
         Serial.print(",");
@@ -150,10 +157,14 @@ void loop(){
       }
     } else {
       up = 0;
+      if(tutorial == 4){
+      digitalWrite(blueButtonLed, HIGH);
+      }
+
     }
    if (buttnDown == LOW && prevButtnDown == HIGH){
       down = 1;
-        Serial.print(0);
+        Serial.print(kmh);
         Serial.print(",");
         Serial.print(left);
         Serial.print(",");
@@ -172,11 +183,14 @@ void loop(){
       }
    } else {
      down = 0;
+     if(tutorial == 4){
+     digitalWrite(blueButtonLed, HIGH);
+     }
      }
 
      if (buttnMiddle == LOW && prevButtnMiddle == HIGH){
       mid = 1;
-        Serial.print(0);
+        Serial.print(kmh);
         Serial.print(",");
         Serial.print(left);
         Serial.print(",");
@@ -196,10 +210,14 @@ void loop(){
         
         if(tutorial == 3){
           tutorial ++;
-         digitalWrite(middleButtonLed, LOW);
+         digitalWrite(middleButtonLed, HIGH);
       }
      } else {
        mid = 0;
+       if(tutorial == 4){
+       digitalWrite(middleButtonLed, HIGH);
+       }
+
        }
 
        prevButtnLeft = buttnLeft;
@@ -209,7 +227,7 @@ void loop(){
        prevButtnMiddle = buttnMiddle;
    
       
-   if (prevState == 1 && state == 0){
+   if (prevState == 0 && state == 1){
       counter ++;
     }
 
@@ -226,19 +244,18 @@ void loop(){
         }
         if(kmh > 0){
          // digitalWrite(ledPin, HIGH);
-//         Serial.println(kmh);
-//          Serial.print(",");
-//          Serial.print(left);
-//          Serial.print(",");
-//          Serial.print(right);
-//          Serial.print(",");
-//          Serial.print(up);
-//          Serial.print(",");
-//          Serial.print(down);
-//          Serial.print(",");
-//          Serial.print(mid);
-//          Serial.println();
-          //Serial.println(kmh);
+          Serial.print(kmh);
+          Serial.print(",");
+          Serial.print(left);
+          Serial.print(",");
+          Serial.print(right);
+          Serial.print(",");
+          Serial.print(up);
+          Serial.print(",");
+          Serial.print(down);
+          Serial.print(",");
+          Serial.print(mid);
+          Serial.println();
         } else {
 //          Serial.print(0);
 //          Serial.print(",");
