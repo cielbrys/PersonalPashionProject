@@ -77,5 +77,3 @@ public class DetectCollision : MonoBehaviour
 
 
 }
-
-// -77 80

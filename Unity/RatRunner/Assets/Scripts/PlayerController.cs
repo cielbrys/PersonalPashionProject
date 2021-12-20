@@ -329,7 +329,6 @@ public class PlayerController : MonoBehaviour
             LeanTween.moveLocalX(distanceMeterUi[1], 0, 8f);
             LeanTween.moveLocalX(distanceMeterUi[2], 0, 8f);
             LeanTween.moveLocalZ(profSoundObj, 0, 8f);
-            
             startedShowing = true;
         }
     }

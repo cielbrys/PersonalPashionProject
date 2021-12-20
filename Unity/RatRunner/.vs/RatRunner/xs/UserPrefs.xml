@@ -1,8 +1,8 @@
 ﻿<Properties StartupConfiguration="{4139E59D-0772-2505-5F57-6CC1CE9AF3EB}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/LeanTween/Framework/LeanTween.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/GameManager.cs">
     <Files>
       <File FileName="Assets/Scripts/DetectCollision.cs" Line="79" Column="2" IsPinned="True" />
-      <File FileName="Assets/Scripts/GameManager.cs" Line="54" Column="25" IsPinned="True" />
+      <File FileName="Assets/Scripts/GameManager.cs" Line="55" Column="39" IsPinned="True" />
       <File FileName="Assets/Scripts/SpawnManager.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/PlayerController.cs" Line="380" Column="38" />
       <File FileName="Assets/Scripts/MoveFloor.cs" />
@@ -25,11 +25,11 @@
           <Node name="RatRunner" expanded="True">
             <Node name="Assets" expanded="True">
               <Node name="LeanTween" expanded="True">
-                <Node name="Framework" expanded="True">
-                  <Node name="LeanTween.cs" selected="True" />
-                </Node>
+                <Node name="Framework" expanded="True" />
               </Node>
-              <Node name="Scripts" expanded="True" />
+              <Node name="Scripts" expanded="True">
+                <Node name="GameManager.cs" selected="True" />
+              </Node>
             </Node>
           </Node>
         </State>
