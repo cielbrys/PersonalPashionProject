@@ -2,6 +2,7 @@ ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
     - ArduinoController
+    - BounceLean
     - CheckPositionTut1
     - CheckPositionTut2
     - DeleteOutOfRange
@@ -138,29 +139,31 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 3264}
     - Class: 114
-      Script: {instanceID: 3322}
+      Script: {instanceID: 3304}
     - Class: 114
-      Script: {instanceID: 3466}
+      Script: {instanceID: 3324}
     - Class: 114
-      Script: {instanceID: 3846}
+      Script: {instanceID: 3468}
     - Class: 114
-      Script: {instanceID: 3962}
+      Script: {instanceID: 3848}
     - Class: 114
-      Script: {instanceID: 3982}
+      Script: {instanceID: 3964}
     - Class: 114
-      Script: {instanceID: 4024}
+      Script: {instanceID: 3984}
     - Class: 114
-      Script: {instanceID: 4174}
+      Script: {instanceID: 4026}
     - Class: 114
-      Script: {instanceID: 4288}
+      Script: {instanceID: 4176}
     - Class: 114
-      Script: {instanceID: 4596}
+      Script: {instanceID: 4290}
     - Class: 114
-      Script: {instanceID: 4668}
+      Script: {instanceID: 4598}
     - Class: 114
-      Script: {instanceID: 4758}
+      Script: {instanceID: 4670}
     - Class: 114
-      Script: {instanceID: 4988}
+      Script: {instanceID: 4760}
+    - Class: 114
+      Script: {instanceID: 4990}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -572,7 +575,7 @@ ScriptsOnlyBuild:
     className: TextContainer
   - hash:
       serializedVersion: 2
-      Hash: 3655b6ad4c6e60ce6fb08bc9cc18060d
+      Hash: 88a94a3c7287d91f09ba188d0e01f04a
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerController
@@ -582,6 +585,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GeneralBasics2d
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: BounceLean
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -842,12 +851,6 @@ ScriptsOnlyBuild:
     className: TMP_SubMeshUI
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: rotateBall
-  - hash:
-      serializedVersion: 2
       Hash: fd68d84f33fad85aac38f2739c0ee270
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
@@ -860,7 +863,7 @@ ScriptsOnlyBuild:
     className: TMP_ScrollbarEventHandler
   - hash:
       serializedVersion: 2
-      Hash: 99197f0282b1cebe842c1967aed1acba
+      Hash: 33168228fcebe0adc8240fd0ae1c7faa
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameManager
@@ -957,4 +960,4 @@ ScriptsOnlyBuild:
   platform: 2
   scenePathNames:
   - Assets/Scenes/Main.unity
-  playerPath: /Users/cielbrys/Documents/DEVINE/PPP/testBuild/RatRunner.app
+  playerPath: /Users/cielbrys/Documents/DEVINE/PPP/RatRunner.app

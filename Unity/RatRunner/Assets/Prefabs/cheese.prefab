@@ -5210,6 +5210,7 @@ GameObject:
   - component: {fileID: -3699476436343131946}
   - component: {fileID: -5178200460238551282}
   - component: {fileID: -8959836257402977822}
+  - component: {fileID: -8925615245318132298}
   m_Layer: 0
   m_Name: cheese
   m_TagString: Cheese
@@ -5282,7 +5283,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab40d0475f656431194e30745dc355d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  voiceOverScript: {fileID: 0}
 --- !u!82 &-8959836257402977822
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5379,6 +5379,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-8925615245318132298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7050355612533001078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb5f8d310a14f49e1b2e30b451518b5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7053166906846934796
 GameObject:
   m_ObjectHideFlags: 0

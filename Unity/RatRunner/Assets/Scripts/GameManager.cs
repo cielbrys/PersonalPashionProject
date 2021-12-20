@@ -14,13 +14,17 @@ public class GameManager : MonoBehaviour
     public GameObject uiSerum;
     public GameObject uiPowerUp;
 
+    public GameObject uiPowerupTextObj;
+    public TextMeshProUGUI uiPowerText;
+
+
     public GameObject uiStart;
     public GameObject uiDead;
     public TextMeshProUGUI uiScore;
     private PlayerController playerControllerScript;
     public float scoreUpdate;
 
-    public int tutorial = 1;
+    public int tutorial = 0;
 
     public GameObject settingUI;
     private bool showingSettings = false;

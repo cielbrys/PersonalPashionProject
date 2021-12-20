@@ -4,9 +4,9 @@
 
 SerialCommand sCmd;
 int hallSensorPin = A5;    
-int state = 0;
+float state = 0;
 int counter = 0;
-int prevState = 0;
+float prevState = 0;
 float prevMillis = 0.00;
 bool firstTime = true;
 int left = 0;
@@ -48,8 +48,8 @@ bool notStarted = true;
 
 int tutorial = 0;
 
-const int WHEEL_DIAMETER = 12; // please enter the wheel diameter in inches (or centimeters if USE_MPH is set to false)
-const int RPM_SAMPLE_PERIOD = 1; // RPM is calculated based on the last 10 seconds of data
+const int WHEEL_DIAMETER = 12; 
+const int RPM_SAMPLE_PERIOD = 1;
 
 SimpleTimer flashTimer;
 SimpleTimer flashTimer2;
@@ -85,6 +85,10 @@ void loop(){
    buttnUp = digitalRead(buttnUpPin);
    buttnDown = digitalRead(buttnDownPin);
    buttnMiddle = digitalRead(buttnMiddlePin);
+
+   if (state == LOW && prevState == HIGH){
+      counter ++;
+    }
 
    if(buttnLeft == LOW && prevButtnLeft == HIGH){
      left = 1;
@@ -226,10 +230,8 @@ void loop(){
        prevButtnDown = buttnDown;
        prevButtnMiddle = buttnMiddle;
    
-      
-   if (prevState == 0 && state == 1){
-      counter ++;
-    }
+  
+   prevState = state;
 
     if(floor((millis()-prevMillis)/1000)>=RPM_SAMPLE_PERIOD)
     {
@@ -239,7 +241,7 @@ void loop(){
 
      if(abs((((float)(millis()-prevMillis)/1000)/60)) > 0.01)
         {
-            rpm = (counter/2) / (((float)(millis()-prevMillis)/1000)/60);
+            rpm = (counter) / (((float)(millis()-prevMillis)/1000)/60);
             kmh = rpm * WHEEL_DIAMETER * 3.14 * 60 / 63360;
         }
         if(kmh > 0){
@@ -272,7 +274,6 @@ void loop(){
          
         }
        
-    prevState = state;
 
     if(notStarted){
       blinkingLed(middleButtonLed);

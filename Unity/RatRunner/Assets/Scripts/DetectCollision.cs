@@ -31,16 +31,24 @@ public class DetectCollision : MonoBehaviour
         if(gameObject.tag == "Cheese" )
         {
             LeanTween.scale(managerScript.uiCheese, new Vector3(0.185159f, 0.3711344f, 0), 0.5f);
+            managerScript.uiPowerText.text = "spring boost";
+            LeanTween.scale(managerScript.uiPowerupTextObj, new Vector3(0.1f, 0.1f, 0), 0.5f);
+
         } else if (gameObject.tag == "Ball")
         {
             LeanTween.scale(managerScript.uiBall, new Vector3(sizePowerUp, 2.9712f, 0), 0.5f);
+            managerScript.uiPowerText.text = "levens boost";
+            LeanTween.scale(managerScript.uiPowerupTextObj, new Vector3(0.1f, 0.1f, 0), 0.5f);
         }
         else if (gameObject.tag == "Serum" )
         {
             LeanTween.scale(managerScript.uiSerum, new Vector3(2.320336f, 3.187264f, 0), 0.5f);
+            managerScript.uiPowerText.text = "Vlieg boost";
+            LeanTween.scale(managerScript.uiPowerupTextObj, new Vector3(0.1f, 0.1f, 0), 0.5f);
+
         }
 
-        if(managerScript.tutorial == 3)
+        if (managerScript.tutorial == 3)
         {
             playerControllerScript.tutorialPause = true;
             playerControllerScript.running = false;
@@ -56,6 +64,9 @@ public class DetectCollision : MonoBehaviour
             }
             LeanTween.scale(managerScript.uiPowerUp, new Vector3(0.2693726f, 0.2693726f, 0), 0.5f);
             LeanTween.moveLocal(managerScript.uiPowerUp, new Vector3(-315, 60, 0), 0.5f);
+            LeanTween.moveLocal(managerScript.uiPowerupTextObj, new Vector3(-315, -30, 0), 0.5f);
+            LeanTween.scale(managerScript.uiPowerupTextObj, new Vector3(0.15f, 0.15f, 0), 0.5f);
+
 
 
         }

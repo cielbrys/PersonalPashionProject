@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 3179888978507968998}
   - component: {fileID: 4316327340365724020}
   - component: {fileID: -3329518996774760570}
+  - component: {fileID: -5959148543206032674}
   m_Layer: 0
   m_Name: ball
   m_TagString: Ball
@@ -136,7 +137,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab40d0475f656431194e30745dc355d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  voiceOverScript: {fileID: 0}
 --- !u!82 &-3329518996774760570
 AudioSource:
   m_ObjectHideFlags: 0
@@ -233,3 +233,15 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-5959148543206032674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4977770564650120052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb5f8d310a14f49e1b2e30b451518b5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
