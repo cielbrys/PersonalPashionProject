@@ -48,12 +48,14 @@ bool notStarted = true;
 
 int tutorial = 0;
 
-const int WHEEL_DIAMETER = 12; 
+const int WHEEL_DIAMETER = 9; 
 const int RPM_SAMPLE_PERIOD = 1;
 
 SimpleTimer flashTimer;
 SimpleTimer flashTimer2;
 int timerInterval = 500;
+
+SimpleTimer speedTimer;
 
 void setup() {
   Serial.begin(9600);  
@@ -72,6 +74,9 @@ void setup() {
   
   flashTimer.setInterval(timerInterval);
   flashTimer2.setInterval(timerInterval*2);
+
+  speedTimer.setInterval(200);
+  
   while (!Serial){
   sCmd.addCommand("PING", pingHandler);
   sCmd.addCommand("blinkMid", blinkingMidLed);
@@ -239,10 +244,12 @@ void loop(){
             counter = 0;
     }
 
-     if(abs((((float)(millis()-prevMillis)/1000)/60)) > 0.01)
+     if(speedTimer.isReady())
         {
-            rpm = (counter) / (((float)(millis()-prevMillis)/1000)/60);
-            kmh = rpm * WHEEL_DIAMETER * 3.14 * 60 / 63360;
+            speedTimer.reset();
+            float mps = ((WHEEL_DIAMETER * 3.14) * counter)/0.2;
+            kmh = mps/10;
+            
         }
         if(kmh > 0){
          // digitalWrite(ledPin, HIGH);

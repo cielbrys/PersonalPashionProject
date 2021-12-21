@@ -2,6 +2,7 @@ ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
     - ArduinoController
+    - BounceLean
     - CheckPositionTut1
     - CheckPositionTut2
     - DeleteOutOfRange
@@ -10,9 +11,11 @@ ScriptsOnlyBuild:
     - GameManager
     - MoveFloor
     - MoveTowardPlayer
+    - MoveWall
     - PlayerController
     - PowerUpTween
     - RepeatFloor
+    - RepeatWall
     - SpawnManager
     - sounds
     Unity.Animation.Rigging.dll:
@@ -39,15 +42,9 @@ ScriptsOnlyBuild:
     - UnityEngine.EventSystems.EventSystem
     - UnityEngine.EventSystems.StandaloneInputModule
     - UnityEngine.UI.CanvasScaler
-    - UnityEngine.UI.Dropdown
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.Image
-    - UnityEngine.UI.Mask
     - UnityEngine.UI.RawImage
-    - UnityEngine.UI.ScrollRect
-    - UnityEngine.UI.Scrollbar
-    - UnityEngine.UI.Text
-    - UnityEngine.UI.Toggle
   sceneClasses:
     Assets/Scenes/Main.unity:
     - Class: 1
@@ -95,69 +92,63 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1522}
+      Script: {instanceID: 1534}
     - Class: 114
-      Script: {instanceID: 1568}
+      Script: {instanceID: 1580}
     - Class: 114
-      Script: {instanceID: 1642}
+      Script: {instanceID: 1666}
     - Class: 114
-      Script: {instanceID: 1650}
+      Script: {instanceID: 1724}
     - Class: 114
-      Script: {instanceID: 1702}
+      Script: {instanceID: 1832}
     - Class: 114
-      Script: {instanceID: 1804}
+      Script: {instanceID: 1874}
     - Class: 114
-      Script: {instanceID: 1842}
+      Script: {instanceID: 1998}
     - Class: 114
-      Script: {instanceID: 1952}
+      Script: {instanceID: 2020}
     - Class: 114
-      Script: {instanceID: 1972}
+      Script: {instanceID: 2178}
     - Class: 114
-      Script: {instanceID: 2124}
+      Script: {instanceID: 2346}
     - Class: 114
-      Script: {instanceID: 2138}
+      Script: {instanceID: 2556}
     - Class: 114
-      Script: {instanceID: 2290}
+      Script: {instanceID: 2572}
     - Class: 114
-      Script: {instanceID: 2492}
+      Script: {instanceID: 2696}
     - Class: 114
-      Script: {instanceID: 2508}
+      Script: {instanceID: 2744}
     - Class: 114
-      Script: {instanceID: 2620}
+      Script: {instanceID: 2900}
     - Class: 114
-      Script: {instanceID: 2666}
+      Script: {instanceID: 3132}
     - Class: 114
-      Script: {instanceID: 2806}
+      Script: {instanceID: 3170}
     - Class: 114
-      Script: {instanceID: 3036}
+      Script: {instanceID: 3370}
     - Class: 114
-      Script: {instanceID: 3044}
+      Script: {instanceID: 3412}
     - Class: 114
-      Script: {instanceID: 3066}
+      Script: {instanceID: 3434}
     - Class: 114
-      Script: {instanceID: 3264}
+      Script: {instanceID: 3588}
     - Class: 114
-      Script: {instanceID: 3322}
+      Script: {instanceID: 4122}
     - Class: 114
-      Script: {instanceID: 3466}
+      Script: {instanceID: 4142}
     - Class: 114
-      Script: {instanceID: 3846}
+      Script: {instanceID: 4468}
     - Class: 114
-      Script: {instanceID: 3962}
+      Script: {instanceID: 4796}
     - Class: 114
-      Script: {instanceID: 3982}
+      Script: {instanceID: 4872}
     - Class: 114
-      Script: {instanceID: 4024}
+      Script: {instanceID: 4962}
     - Class: 114
-      Script: {instanceID: 4174}
+      Script: {instanceID: 5060}
     - Class: 114
-      Script: {instanceID: 4288}
-    - Class: 114
-      Script: {instanceID: 4596}
-    - Class: 114
-      Script: {instanceID: 4668}
-    - Class: 114
-      Script: {instanceID: 4986}
+      Script: {instanceID: 5202}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -569,7 +560,7 @@ ScriptsOnlyBuild:
     className: TextContainer
   - hash:
       serializedVersion: 2
-      Hash: 3655b6ad4c6e60ce6fb08bc9cc18060d
+      Hash: f5cf1161151c8b0a33885167118eea67
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerController
@@ -581,7 +572,13 @@ ScriptsOnlyBuild:
     className: GeneralBasics2d
   - hash:
       serializedVersion: 2
-      Hash: dabb456e4b852c98b2d82b36d29e72f3
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: BounceLean
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: MoveFloor
@@ -617,7 +614,7 @@ ScriptsOnlyBuild:
     className: GeneralEventsListeners
   - hash:
       serializedVersion: 2
-      Hash: eadb56071aa6ef97bd87469173753305
+      Hash: 209a4cfe5437fe4521e41991f21449aa
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ArduinoController
@@ -839,12 +836,6 @@ ScriptsOnlyBuild:
     className: TMP_SubMeshUI
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: rotateBall
-  - hash:
-      serializedVersion: 2
       Hash: fd68d84f33fad85aac38f2739c0ee270
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
@@ -857,10 +848,16 @@ ScriptsOnlyBuild:
     className: TMP_ScrollbarEventHandler
   - hash:
       serializedVersion: 2
-      Hash: 99197f0282b1cebe842c1967aed1acba
+      Hash: eba1229ff554c99667861c51b6a43367
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameManager
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: RepeatWall
   - hash:
       serializedVersion: 2
       Hash: e9932200d83498a2e6c029112d69de59
@@ -873,6 +870,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Animation.Rigging.dll
     namespaceName: UnityEngine.Animations.Rigging
     className: BlendConstraint
+  - hash:
+      serializedVersion: 2
+      Hash: afc5b93a7b192de2dcb3832fe35a5c7e
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: MoveWall
   - hash:
       serializedVersion: 2
       Hash: d2eba8f2fd97b33476dea24e1b2164d9
@@ -948,4 +951,4 @@ ScriptsOnlyBuild:
   platform: 19
   scenePathNames:
   - Assets/Scenes/Main.unity
-  playerPath: /Users/cielbrys/Documents/DEVINE/PPP/PersonalPashionProject/Unity/testBuild/RatRunner_Win/RatRunner.exe
+  playerPath: /Users/cielbrys/Documents/DEVINE/PPP/PersonalPashionProject/build/RatRunner_win/RatRunner.exe

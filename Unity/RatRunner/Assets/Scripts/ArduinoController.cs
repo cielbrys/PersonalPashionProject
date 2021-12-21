@@ -8,13 +8,12 @@ using UnityEngine.UI;
 
 public class ArduinoController : MonoBehaviour
 {
-    public SerialPort stream = new SerialPort("/dev/tty.usbserial-AD0KBXJ2", 9600);
+    public SerialPort stream;
     public string data;
     private Thread thread;
     private Queue outputQueue;    // From Unity to Arduino
     private Queue inputQueue; // Arduino to Unity
-    public Dropdown usbPort;
-    public string usbPortText = "/dev/tty.usbserial-AD0KBXJ2"; // mac: " / dev/tty.usbserial-AD0KBXJ2" windows: "COM4";
+    public string usbPortText; // mac: "/dev/tty.usbserial-AD0KBXJ2" windows: "COM4";
 
     // Start is called before the first frame update
     void Start()

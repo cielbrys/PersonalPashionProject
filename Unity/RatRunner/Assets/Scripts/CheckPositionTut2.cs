@@ -23,7 +23,6 @@ public class CheckPositionTut2 : MonoBehaviour
         {
             playerScript.tutorialPause = true;
             playerScript.running = false;
-            playerScript.StopScore();
             if (voiceOverScript.played == 2)
             {
                 voiceOverScript.voiceOver.PlayOneShot(voiceOverScript.voiceOvers[2], 1.0f);

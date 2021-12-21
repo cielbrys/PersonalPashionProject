@@ -5,6 +5,7 @@ using UnityEngine;
 public class RepeatWall : MonoBehaviour
 {
     private Vector3 startPos;
+    private Vector3 startPos2;
     private float repeatWidth;
     // Start is called before the first frame update
     void Start()

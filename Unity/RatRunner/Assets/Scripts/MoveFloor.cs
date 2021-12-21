@@ -18,7 +18,7 @@ public class MoveFloor : MonoBehaviour
     {
         if (playerControllerScript.running == true)
         {
-            transform.Translate(Vector3.back * Time.deltaTime * (gameManagerScript.speed * 10));
+            transform.Translate(Vector3.back * Time.deltaTime * gameManagerScript.speed);
         }
     }
 }

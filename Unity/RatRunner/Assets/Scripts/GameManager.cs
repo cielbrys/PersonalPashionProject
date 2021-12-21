@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using System;
 
 public class GameManager : MonoBehaviour
 {
-    public float speed = 3f;
+    public float speed = 0;
     public bool gameOver;
 
     public GameObject uiBall;
@@ -25,9 +26,6 @@ public class GameManager : MonoBehaviour
     public float scoreUpdate;
 
     public int tutorial = 0;
-
-    public GameObject settingUI;
-    private bool showingSettings = false;
 
     public AudioSource SoundTrack;
 
@@ -60,7 +58,7 @@ public class GameManager : MonoBehaviour
 
         if (gameOver)
         {
-            uiScore.text = playerControllerScript.score.ToString() + " meter";
+            uiScore.text = Math.Round(playerControllerScript.score,1).ToString() + " meter";
             uiDead.gameObject.SetActive(true);
         }
 
@@ -73,18 +71,6 @@ public class GameManager : MonoBehaviour
             scoreUpdate = 1f;
             speed = 30f;
         }
-
-        if (Input.GetKeyUp(KeyCode.F5))
-        {
-            if (!showingSettings)
-            {
-                settingUI.SetActive(true);
-                showingSettings = true;
-            } else
-            {
-                settingUI.SetActive(false);
-                showingSettings = false;
-            }
-        } 
+ 
     }
 }

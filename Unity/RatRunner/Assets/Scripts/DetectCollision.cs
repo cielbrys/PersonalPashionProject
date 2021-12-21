@@ -51,8 +51,7 @@ public class DetectCollision : MonoBehaviour
         if (managerScript.tutorial == 3)
         {
             playerControllerScript.tutorialPause = true;
-            playerControllerScript.running = false;
-            playerControllerScript.StopScore();
+            playerControllerScript.running = false;;
             if (voiceOverScript.played == 3)
             {
                 voiceOverScript.voiceOver.PlayOneShot(voiceOverScript.voiceOvers[3], 1.0f);
