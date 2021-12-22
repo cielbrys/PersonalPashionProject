@@ -1,11 +1,11 @@
 ﻿<Properties StartupConfiguration="{4139E59D-0772-2505-5F57-6CC1CE9AF3EB}|">
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/ArduinoController.cs">
     <Files>
-      <File FileName="Assets/Scripts/DetectCollision.cs" IsPinned="True" />
+      <File FileName="Assets/Scripts/DetectCollision.cs" Line="1" Column="1" IsPinned="True" />
       <File FileName="Assets/Scripts/SpawnManager.cs" IsPinned="True" />
       <File FileName="Assets/Scripts/ArduinoController.cs" Line="16" Column="41" IsPinned="True" />
-      <File FileName="Assets/Scripts/PlayerController.cs" Line="133" Column="1" />
-      <File FileName="Assets/Scripts/GameManager.cs" />
+      <File FileName="Assets/Scripts/PlayerController.cs" Line="134" Column="1" />
+      <File FileName="Assets/Scripts/GameManager.cs" Line="48" Column="18" />
       <File FileName="Assets/Scripts/MoveFloor.cs" />
       <File FileName="Assets/Scripts/FollowPlayer.cs" />
       <File FileName="Assets/Scripts/DeleteOutOfRange.cs" />
@@ -23,14 +23,20 @@
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="RatRunner" expanded="True" selected="True" />
+          <Node name="RatRunner" expanded="True">
+            <Node name="Assets" expanded="True">
+              <Node name="Scripts" expanded="True">
+                <Node name="ArduinoController.cs" selected="True" />
+              </Node>
+            </Node>
+          </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="ac6d65f3-4c29-47d8-b199-ba0eede9a3ba" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="7c9b4424-1463-428f-b285-1f14fb7b525b" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

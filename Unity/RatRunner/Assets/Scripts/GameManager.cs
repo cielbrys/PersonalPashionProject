@@ -58,7 +58,7 @@ public class GameManager : MonoBehaviour
 
         if (gameOver)
         {
-            uiScore.text = Math.Round(playerControllerScript.score,1).ToString() + " meter";
+            uiScore.text = Math.Round(playerControllerScript.score,1).ToString();
             uiDead.gameObject.SetActive(true);
         }
 
